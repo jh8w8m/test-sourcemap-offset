@@ -1,0 +1,22 @@
+{
+  "name": "test-sourcemap-offset",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run1": "babel common1.js --out-file common1-compiled.js --source-maps",
+    "run2": "babel common2.js --out-file common2-compiled.js --source-maps",
+    "run1-minify": "babel common1.js --out-file common1-compiled-min.js --source-maps --presets minify",
+    "run2-minify": "babel common2.js --out-file common2-compiled-min.js --source-maps --presets minify",
+    "map": "node ./sourcemap.js"
+  },
+  "author": "jh8w8m",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.24.7",
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "babel-preset-minify": "^0.5.2",
+    "source-map": "^0.7.4"
+  }
+}
