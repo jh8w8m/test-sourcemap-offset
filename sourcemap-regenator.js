@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path')
 
 async function reGenerate() {
-  const rawSourceMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), './common1-compiled-min.js.map'), 'utf8')); // 可替换
+  const rawSourceMap = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), './doubleFile/common-compiled-min.js.map'), 'utf8')); // 可替换
 
   const consumer = await new SourceMapConsumer(rawSourceMap);
   let sourcesContent = consumer.sourcesContent;
@@ -33,6 +33,7 @@ async function reGenerate() {
     // 在当前行中使用 next 截取计算当前映射的代码片段，next 不存在则默认全长
     const codeSegment = lineContent.slice(cur.originalColumn, next ? next.originalColumn : lineContent.length);
     codeSegmentList.push(codeSegment);
+    console.log('cur', cur);
     // console.log('Code Segment:', codeSegment);
   }
 
@@ -41,6 +42,7 @@ async function reGenerate() {
   let replacementOffset = 0;
   for (let j = 0; j < codeSegmentList.length; j++) {
     const regex = new RegExp(`"(@/common[^"]*)"`, 'g');
+    const codeSegment = codeSegmentList[j];
     if (regex.test(codeSegment)) {
       // 如果当前映射的代码片段中包含关键字，稳妥一点，查询前两个 mapping 是否是 require 和 '('
       // 如果是 require( + 模块关键字 的形式，则判定为需要替换的代码片段
@@ -54,7 +56,7 @@ async function reGenerate() {
       } catch (err) {}
       if (judgeExternalAlias) {
         // 这里简化了一下，每次加固定的偏移量
-        replacementOffset +=
+        replacementOffset += 10
       }
     }
   }

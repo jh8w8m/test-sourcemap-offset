@@ -1,0 +1,22 @@
+{
+  "version": 3,
+  "file": "common-compiled-min.js",
+  "names": [
+    "hello",
+    "require",
+    "sayHello1",
+    "hello",
+    "require",
+    "sayHello2"
+  ],
+  "sources": [
+    "common3.js",
+    "common4.js"
+  ],
+  "sourcesContent": [
+    "const hello = require(\"@/common/res\");\nfunction sayHello1() {\n  let params = \"unknown1\"\n  hello(params);\n}\nsayHello1();\n",
+    "const hello = require(\"@/common/res\");\nfunction sayHello2() {\n  let params = \"unknown2\"\n  hello(params);\n}\nsayHello2();\n"
+  ],
+  "mappings": "aAAA,GAAM,CAAAA,KAAK,CAAGC,OAAO,CAAC,cAAc,CAAC,CACrC,QAAS,CAAAC,SAASA,CAAA,CAAG,CAEnBF,KAAK,WAAO,CACd,CACAE,SAAS,CAAC,CAAC;aCLX,GAAM,CAAAC,KAAK,CAAGC,OAAO,CAAC,cAAc,CAAC,CACrC,QAAS,CAAAC,SAASA,CAAA,CAAG,CAEnBF,KAAK,WAAO,CACd,CACAE,SAAS,CAAC,CAAC",
+  "ignoreList": []
+}
